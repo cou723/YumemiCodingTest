@@ -8,7 +8,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v3
         with:
@@ -18,11 +18,8 @@ jobs:
         run: |
           npm install
           npm run build
+      - name: "Test"
+        run: npx vitest --coverage.enabled true
 
-      - name: Run vitest and report issues
-        uses: roerohan/vitest-github-action@v1.3.16
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          config: ./vitest.config.ts
-          coverage: true
+      - name: Vitest Coverage Report
+        uses: davelosert/vitest-coverage-report-action@v2.2.1

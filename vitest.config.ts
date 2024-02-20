@@ -4,7 +4,8 @@ import { defineConfig } from "vite";
 export default defineConfig({
   test: {
     coverage: {
-      reporter: ["text", "json", "html"],
+      reporter: ["text", "json-summary", "json"],
+      reportOnFailure: true,
     },
   },
 });
