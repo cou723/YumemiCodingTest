@@ -4,10 +4,7 @@ import {
   PopulationCompositionResponse,
   PopulationCompositionResponseSchema,
 } from "@/types/populationCompositionResponse";
-import {
-  PrefecturesResponse,
-  PrefecturesResponseSchema,
-} from "@/types/prefecturesResponse";
+import { PrefecturesResponse, PrefecturesResponseSchema } from "@/types/prefecturesResponse";
 
 type ResasOptions = ResasPrefectureOptions | ResasPopulationCompositionOptions;
 
@@ -17,24 +14,17 @@ type ResasPrefectureOptions = {
   method: "GET";
 };
 
-if (import.meta.env.VITE_RESAS_API_KEY === undefined)
-  throw new Error("VITE_RESAS_API_KEY is not defined");
+if (import.meta.env.VITE_RESAS_API_KEY === undefined) throw new Error("VITE_RESAS_API_KEY is not defined");
 
 // DONT FORGET ERROR HANDLING
-export async function fetchResas({
-  type: _,
-  url: url_path,
-  method,
-  ...rest
-}: ResasOptions): Promise<unknown> {
+export async function fetchResas({ type: _, url: url_path, method, ...rest }: ResasOptions): Promise<unknown> {
   const url = new URL(url_path, "https://opendata.resas-portal.go.jp/api/v1/");
   const params = { ...rest }.params;
 
   if (params) {
     url.searchParams.set("prefCode", params.prefCode.toString());
     url.searchParams.set("cityCode", params.cityCode ?? "-");
-    if (params.addArea)
-      url.searchParams.set("addArea", JSON.stringify(params.addArea));
+    if (params.addArea) url.searchParams.set("addArea", JSON.stringify(params.addArea));
   }
 
   const res = await fetch(
@@ -43,7 +33,7 @@ export async function fetchResas({
         "X-API-KEY": import.meta.env.VITE_RESAS_API_KEY as string,
       },
       method,
-    }),
+    })
   );
   return await res.json();
 }
@@ -63,7 +53,7 @@ export async function fetchPrefectures(): Promise<PrefecturesResponse> {
 
 // DONT FORGET ERROR HANDLING
 export async function fetchPopulationComposition(
-  params: ResasPopulationCompositionOptions["params"],
+  params: ResasPopulationCompositionOptions["params"]
 ): Promise<PopulationCompositionResponse> {
   if (params.cityCode == undefined) params.cityCode = "-";
   // pass error

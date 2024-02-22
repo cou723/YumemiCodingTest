@@ -30,12 +30,7 @@ const Graph: React.FC<Props> = ({ populationCompositions }) => {
       data: populationComposition.data,
     })),
   };
-  return (
-    <HighchartsReact
-      highcharts={Highcharts}
-      options={options}
-    ></HighchartsReact>
-  );
+  return <HighchartsReact highcharts={Highcharts} options={options}></HighchartsReact>;
 };
 
 export default Graph;

@@ -12,9 +12,7 @@ type Props = {
 };
 
 const PrefectureCheckboxes: React.FC<Props> = ({ prefectures, onChange }) => {
-  const [prefectureDatum, setPrefectureDatum] = useState<
-    PopulationComposition[]
-  >([]);
+  const [prefectureDatum, setPrefectureDatum] = useState<PopulationComposition[]>([]);
 
   return (
     <Box>
@@ -32,16 +30,11 @@ const PrefectureCheckboxes: React.FC<Props> = ({ prefectures, onChange }) => {
               console.error(error);
             }
             if (data) {
-              const updatedPrefectureDatum = [
-                ...prefectureDatum,
-                { label: prefecture, data },
-              ];
+              const updatedPrefectureDatum = [...prefectureDatum, { label: prefecture, data }];
               setPrefectureDatum(updatedPrefectureDatum);
               onChange(updatedPrefectureDatum);
             } else {
-              const updatePrefectureDatum = prefectureDatum.filter(
-                (d) => d.label.prefCode !== prefecture.prefCode,
-              );
+              const updatePrefectureDatum = prefectureDatum.filter((d) => d.label.prefCode !== prefecture.prefCode);
               setPrefectureDatum(updatePrefectureDatum);
               onChange(updatePrefectureDatum);
             }

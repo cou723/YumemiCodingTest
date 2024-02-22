@@ -12,15 +12,7 @@ type Props = {
   [key: string]: unknown;
 };
 
-const FlexBox = ({
-  children,
-  gap,
-  justifyContent,
-  alignItems,
-  flexDirection,
-  flexWrap,
-  ...props
-}: Props) => {
+const FlexBox = ({ children, gap, justifyContent, alignItems, flexDirection, flexWrap, ...props }: Props) => {
   return (
     <Box
       sx={{

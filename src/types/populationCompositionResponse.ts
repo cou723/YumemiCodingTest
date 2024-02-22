@@ -16,9 +16,7 @@ export const PopulationCompositionResponseSchema = ResasResponseSchema(
           .array(),
       })
       .array(),
-  }),
+  })
 );
 
-export type PopulationCompositionResponse = z.infer<
-  typeof PopulationCompositionResponseSchema
->;
+export type PopulationCompositionResponse = z.infer<typeof PopulationCompositionResponseSchema>;

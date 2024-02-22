@@ -8,7 +8,7 @@ export const PrefecturesResponseSchema = ResasResponseSchema(
       prefCode: z.number(),
       prefName: z.string(),
     })
-    .array(),
+    .array()
 );
 
 export type PrefecturesResponse = z.infer<typeof PrefecturesResponseSchema>;

@@ -16,15 +16,7 @@ module.exports = {
     "import/order": [
       "error",
       {
-        groups: [
-          "builtin",
-          "external",
-          "parent",
-          "sibling",
-          "index",
-          "object",
-          "type",
-        ],
+        groups: ["builtin", "external", "parent", "sibling", "index", "object", "type"],
         pathGroups: [
           {
             pattern: "{react,react-dom/**,react-router-dom}",
@@ -44,9 +36,6 @@ module.exports = {
         "newlines-between": "always",
       },
     ],
-    "react-refresh/only-export-components": [
-      "warn",
-      { allowConstantExport: true },
-    ],
+    "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
   },
 };

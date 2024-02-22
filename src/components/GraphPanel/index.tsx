@@ -3,30 +3,18 @@ import React from "react";
 import { Box, Tab, Tabs } from "@mui/material";
 
 import Graph from "@/components/GraphPanel/Graph";
-import {
-  PopulationComposition,
-  extractPopulationCompositionsLabel,
-} from "@/types/populationCompositions";
+import { PopulationComposition, extractPopulationCompositionsLabel } from "@/types/populationCompositions";
 
 type Props = {
   populationCompositions: PopulationComposition[];
   isLoading: boolean;
 };
 
-function extractGraphData(
-  pc: PopulationComposition,
-  target: string,
-): { label: string; data: [number, number][] } {
-  const targetBody = pc.data.data.find(
-    (itemizedData) => itemizedData.label === target,
-  );
+function extractGraphData(pc: PopulationComposition, target: string): { label: string; data: [number, number][] } {
+  const targetBody = pc.data.data.find((itemizedData) => itemizedData.label === target);
   return {
     label: pc.label.prefName,
-    data:
-      targetBody?.data.map((dataPerYear) => [
-        dataPerYear.year,
-        dataPerYear.value,
-      ]) ?? [],
+    data: targetBody?.data.map((dataPerYear) => [dataPerYear.year, dataPerYear.value]) ?? [],
   };
 }
 
@@ -43,10 +31,7 @@ const GraphPanel: React.FC<Props> = ({ populationCompositions, isLoading }) => {
         <Tabs
           value={selectedLabel}
           onChange={(_e, value) => {
-            if (typeof value != "number")
-              throw new Error(
-                "[GraphPanel] value is not number. this should not happen.",
-              );
+            if (typeof value != "number") throw new Error("[GraphPanel] value is not number. this should not happen.");
             setSelectedLabel(value);
           }}
           aria-label="basic tabs example"
@@ -59,7 +44,7 @@ const GraphPanel: React.FC<Props> = ({ populationCompositions, isLoading }) => {
       <Graph
         populationCompositions={
           populationCompositions.map((populationComposition) =>
-            extractGraphData(populationComposition, labels[selectedLabel]),
+            extractGraphData(populationComposition, labels[selectedLabel])
           ) ?? []
         }
       />
