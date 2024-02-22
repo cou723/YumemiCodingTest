@@ -3,17 +3,28 @@ import React from "react";
 import * as Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-import { PopulationCompositions } from "@/types/populationCompositions";
+import { PopulationComposition } from "@/types/populationCompositions";
 
 type Props = {
-  populationCompositions: PopulationCompositions;
+  populationCompositions: PopulationComposition[];
   isLoading: boolean;
 };
+
+function extractPopulationComposition(pc: PopulationComposition) {
+  // return pc.data.data.map((itemizedData /*総人口や年少人口ごとにわけられたデータ */) => {
+  //   return itemizedData.data.map((dataPerYear) => ({ name: dataPerYear.year, y: 10 }));
+  // });
+  return pc.data.data[0].data.map((dataPerYear) => [
+    dataPerYear.year,
+    dataPerYear.value,
+  ]);
+}
 
 const Graph: React.FC<Props> = ({ populationCompositions, isLoading }) => {
   if (isLoading) return <div>loading...</div>;
   if (populationCompositions.length === 0) return <div>no data</div>;
   const options: Highcharts.Options = {
+    chart: { type: "line" },
     title: {
       text: "人口構成",
     },
@@ -21,21 +32,17 @@ const Graph: React.FC<Props> = ({ populationCompositions, isLoading }) => {
       title: {
         text: "年度",
       },
-      categories: populationCompositions[0].data.data[0].data.map((d) =>
-        d.year.toString(),
-      ),
     },
     yAxis: {
       title: {
         text: "人口数",
       },
+      min: 0,
     },
     series: populationCompositions.map((populationComposition) => ({
       name: populationComposition.label.prefName,
       type: "line",
-      data: populationComposition.data.data.map((datum) =>
-        datum.data.map((d) => ({ name: d.year, y: d.value })),
-      ),
+      data: extractPopulationComposition(populationComposition),
     })),
   };
   return (
