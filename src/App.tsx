@@ -1,14 +1,15 @@
 import { useState } from "react";
 
-import Graph from "@/components/Graph";
+import GraphPanel from "@/components/GraphPanel";
 import Header from "@/components/Header";
 import PrefectureCheckboxes from "@/components/PrefectureCheckboxes";
 import { usePrefectures } from "@/hooks/usePrefectures";
-import { PopulationCompositions } from "@/types/populationCompositions";
+import { PopulationComposition } from "@/types/populationCompositions";
 
 function App() {
-  const [populationCompositions, setPopulationCompositions] =
-    useState<PopulationCompositions>([]);
+  const [populationCompositions, setPopulationCompositions] = useState<
+    PopulationComposition[]
+  >([]);
 
   const { data: prefectures, isLoading, error } = usePrefectures();
 
@@ -22,7 +23,7 @@ function App() {
         prefectures={prefectures.result}
         onChange={(prefectures) => setPopulationCompositions(prefectures)}
       />
-      <Graph
+      <GraphPanel
         populationCompositions={populationCompositions}
         isLoading={isLoading}
       />
