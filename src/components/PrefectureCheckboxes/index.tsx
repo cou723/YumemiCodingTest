@@ -3,17 +3,18 @@ import React, { useState } from "react";
 import { Box } from "@mui/material";
 
 import PrefectureCheckbox from "@/components/PrefectureCheckboxes/PrefectureCheckbox";
-import { PopulationCompositions } from "@/types/populationCompositions";
+import { PopulationComposition } from "@/types/populationCompositions";
 import { Prefecture } from "@/types/prefecture";
 
 type Props = {
   prefectures: Prefecture[];
-  onChange: (datum: PopulationCompositions) => void;
+  onChange: (datum: PopulationComposition[]) => void;
 };
 
 const PrefectureCheckboxes: React.FC<Props> = ({ prefectures, onChange }) => {
-  const [prefectureDatum, setPrefectureDatum] =
-    useState<PopulationCompositions>([]);
+  const [prefectureDatum, setPrefectureDatum] = useState<
+    PopulationComposition[]
+  >([]);
 
   return (
     <Box>
@@ -26,16 +27,23 @@ const PrefectureCheckboxes: React.FC<Props> = ({ prefectures, onChange }) => {
               // TODO: loading時のUIを返す
               return;
             }
-            if (data) {
-              setPrefectureDatum([
-                ...prefectureDatum,
-                { label: prefecture, data },
-              ]);
-              onChange([...prefectureDatum, { label: prefecture, data }]);
-            }
             if (error) {
               // TODO: エラー時の処理
               console.error(error);
+            }
+            if (data) {
+              const updatedPrefectureDatum = [
+                ...prefectureDatum,
+                { label: prefecture, data },
+              ];
+              setPrefectureDatum(updatedPrefectureDatum);
+              onChange(updatedPrefectureDatum);
+            } else {
+              const updatePrefectureDatum = prefectureDatum.filter(
+                (d) => d.label.prefCode !== prefecture.prefCode,
+              );
+              setPrefectureDatum(updatePrefectureDatum);
+              onChange(updatePrefectureDatum);
             }
           }}
         />
