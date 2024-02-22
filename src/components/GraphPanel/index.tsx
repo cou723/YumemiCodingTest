@@ -3,7 +3,8 @@ import React from "react";
 import { Box, Tab, Tabs } from "@mui/material";
 
 import Graph from "@/components/GraphPanel/Graph";
-import { PopulationComposition, extractPopulationCompositionsLabel } from "@/types/populationCompositions";
+import { extractPopulationCompositionsLabel } from "@/libs/extractPopulationCompositionsLabel";
+import { PopulationComposition } from "@/types/populationCompositions";
 
 type Props = {
   populationCompositions: PopulationComposition[];
