@@ -13,7 +13,9 @@ function App() {
 
   const { data: prefectures, isLoading, error } = usePrefectures();
 
+  // TODO: loading UI
   if (isLoading) return <div>loading...</div>;
+  // TODO: error UI
   if (error || prefectures === undefined)
     return <div>error:{JSON.stringify(error)}</div>;
   return (

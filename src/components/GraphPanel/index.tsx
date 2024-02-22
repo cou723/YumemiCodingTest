@@ -32,10 +32,9 @@ function extractGraphData(
 
 const GraphPanel: React.FC<Props> = ({ populationCompositions, isLoading }) => {
   const labels = extractPopulationCompositionsLabel(populationCompositions);
-  console.log(labels);
-
   const [selectedLabel, setSelectedLabel] = React.useState(0);
-  console.log(labels[0]);
+
+  // TODO: loading
   if (isLoading) return <div>loading...</div>;
 
   return (
