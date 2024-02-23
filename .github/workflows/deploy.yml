@@ -23,11 +23,12 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 18
-          # pnpmのキャッシュを効かすために設定 (npmのかたはnpmで)
-          cache: pnpm
+          node-version: 20
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 8.15.3
       - name: install dependencies
-        run: pnpm install
+        run: pnpm i --frozen-lockfile
       - name: build app
         run: pnpm build
         env:
