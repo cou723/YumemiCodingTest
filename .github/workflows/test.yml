@@ -14,12 +14,16 @@ jobs:
         with:
           node-version: 20
 
-      - name: Run `npm install`
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 8.15.3
+
+      - name: install dependencies
         run: |
-          npm install
-          npm run build
+          pnpm i --frozen-lockfile
+          pnpm run build
       - name: "Test"
-        run: npx vitest --coverage.enabled true
+        run: pnpm dlx vitest --coverage.enabled true
 
       - name: Vitest Coverage Report
         uses: davelosert/vitest-coverage-report-action@v2.2.1
