@@ -16,3 +16,4 @@
 - https://mui.com/system/flexbox/
 - https://github.com/highcharts/highcharts-react
 - https://github.com/highcharts/highcharts-react?tab=readme-ov-file#basic-usage-example
+- https://zenn.dev/kanakanho/articles/3a8b313e698b7f
