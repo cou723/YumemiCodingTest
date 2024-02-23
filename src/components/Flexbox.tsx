@@ -9,10 +9,11 @@ type Props = {
   alignItems?: React.CSSProperties["alignItems"];
   flexDirection?: React.CSSProperties["flexDirection"];
   flexWrap?: React.CSSProperties["flexWrap"];
+  sx?: React.CSSProperties;
   [key: string]: unknown;
 };
 
-const FlexBox = ({ children, gap, justifyContent, alignItems, flexDirection, flexWrap, ...props }: Props) => {
+const FlexBox = ({ children, gap, justifyContent, alignItems, flexDirection, flexWrap, sx, ...props }: Props) => {
   return (
     <Box
       sx={{
@@ -22,6 +23,7 @@ const FlexBox = ({ children, gap, justifyContent, alignItems, flexDirection, fle
         alignItems,
         flexDirection,
         flexWrap,
+        ...sx,
       }}
       {...props}
     >

@@ -64,7 +64,6 @@ export async function fetchPopulationComposition(
     params,
   });
 
-  console.log(data);
   // pass error
   return PopulationCompositionResponseSchema.parse(data);
 }

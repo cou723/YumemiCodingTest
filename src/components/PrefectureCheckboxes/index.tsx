@@ -1,34 +1,35 @@
 import React, { useState } from "react";
 
-import { Box } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 
+import FlexBox from "@/components/Flexbox";
 import PrefectureCheckbox from "@/components/PrefectureCheckboxes/PrefectureCheckbox";
 import { PopulationComposition } from "@/types/populationCompositions";
 import { Prefecture } from "@/types/prefecture";
 
 type Props = {
-  prefectures: Prefecture[];
+  isLoading: boolean;
+  prefectures?: Prefecture[];
   onChange: (datum: PopulationComposition[]) => void;
 };
 
-const PrefectureCheckboxes: React.FC<Props> = ({ prefectures, onChange }) => {
+const PrefectureCheckboxes: React.FC<Props> = ({ isLoading, prefectures = [], onChange }) => {
   const [prefectureDatum, setPrefectureDatum] = useState<PopulationComposition[]>([]);
 
+  if (isLoading)
+    return (
+      <FlexBox justifyContent="center" sx={{ padding: "32px" }}>
+        <CircularProgress />
+      </FlexBox>
+    );
+
   return (
-    <Box>
+    <Box sx={{ display: "flex", flexDirection: "row", width: "100%", flexWrap: "wrap" }}>
       {prefectures.map((prefecture, i) => (
         <PrefectureCheckbox
           key={i}
           prefecture={prefecture}
-          onChange={(data, loading, error) => {
-            if (loading) {
-              // TODO: loading時のUIを返す
-              return;
-            }
-            if (error) {
-              // TODO: エラー時の処理
-              console.error(error);
-            }
+          onChange={(data) => {
             if (data) {
               const updatedPrefectureDatum = [...prefectureDatum, { label: prefecture, data }];
               setPrefectureDatum(updatedPrefectureDatum);

@@ -8,7 +8,6 @@ import { PopulationComposition } from "@/types/populationCompositions";
 
 type Props = {
   populationCompositions: PopulationComposition[];
-  isLoading: boolean;
 };
 
 function extractGraphData(pc: PopulationComposition, target: string): { label: string; data: [number, number][] } {
@@ -19,12 +18,9 @@ function extractGraphData(pc: PopulationComposition, target: string): { label: s
   };
 }
 
-const GraphPanel: React.FC<Props> = ({ populationCompositions, isLoading }) => {
+const GraphPanel: React.FC<Props> = ({ populationCompositions }) => {
   const labels = extractPopulationCompositionsLabel(populationCompositions);
   const [selectedLabel, setSelectedLabel] = React.useState(0);
-
-  // TODO: loading
-  if (isLoading) return <div>loading...</div>;
 
   return (
     <Box>

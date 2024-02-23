@@ -2,10 +2,10 @@ import { useQuery } from "@tanstack/react-query";
 
 import { keys } from "@/constants/queryKeys";
 import { fetchPrefectures } from "@/libs/fetchResas";
+import { PrefecturesResponse } from "@/types/prefecturesResponse";
 
 export function usePrefectures() {
-  // TODO: useQueryの型引数を指定する
-  return useQuery({
+  return useQuery<PrefecturesResponse, Error>({
     queryKey: [keys.prefectures],
     queryFn: fetchPrefectures,
     staleTime: 1000 * 60 * 60 * 24 * 120 /* 120days */,
