@@ -33,6 +33,7 @@ jobs:
         run: pnpm build
         env:
           GITHUB_PAGES: true
+          VITE_RESAS_API_KEY: ${{ secrets.VITE_RESAS_API_KEY }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
