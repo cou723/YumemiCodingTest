@@ -14,7 +14,10 @@ function App() {
 
   const { data: prefectures, isLoading, error } = usePrefectures();
 
-  if (error) toast.error("県一覧の取得に失敗しました");
+  if (error) {
+    toast.error("県一覧の取得に失敗しました");
+    console.error(error);
+  }
   return (
     <>
       <Header />
