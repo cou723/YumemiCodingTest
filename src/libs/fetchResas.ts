@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 import { ResasPopulationCompositionOptions } from "../types/resasPopulationCompositionOptions";
 
 import {
@@ -27,27 +29,30 @@ export async function fetchResas({ type: _, url: url_path, method, ...rest }: Re
     if (params.addArea) url.searchParams.set("addArea", JSON.stringify(params.addArea));
   }
 
-  const res = await fetch(
-    new Request(url, {
-      headers: {
-        "X-API-KEY": import.meta.env.VITE_RESAS_API_KEY as string,
-      },
-      method,
-    })
-  );
+  const headers = new Headers();
+  headers.append("X-API-KEY", import.meta.env.VITE_RESAS_API_KEY as string);
+
+  const res = await fetch(new Request(url, { headers, method }));
+
+  if (res.ok === false) {
+    if (res.status === 429) {
+      toast.error("APIの利用制限にかかりました。しばらく時間をおいてから再度お試しください。");
+      return {};
+    }
+    toast(`fetchResas: ${res.status} ${res.statusText}`);
+    throw new Error(`fetchResas: ${res.status} ${res.statusText}`);
+  }
   return await res.json();
 }
 
 // DONT FORGET ERROR HANDLING
 export async function fetchPrefectures(): Promise<PrefecturesResponse> {
   // pass error
-  // TODO: 429 error handling
   const data = await fetchResas({
     type: "prefectures",
     url: "prefectures",
     method: "GET",
   });
-  console.log("fetch", data);
 
   // pass error
   return await PrefecturesResponseSchema.parse(data);
