@@ -41,11 +41,13 @@ export async function fetchResas({ type: _, url: url_path, method, ...rest }: Re
 // DONT FORGET ERROR HANDLING
 export async function fetchPrefectures(): Promise<PrefecturesResponse> {
   // pass error
+  // TODO: 429 error handling
   const data = await fetchResas({
     type: "prefectures",
     url: "prefectures",
     method: "GET",
   });
+  console.log("fetch", data);
 
   // pass error
   return await PrefecturesResponseSchema.parse(data);
