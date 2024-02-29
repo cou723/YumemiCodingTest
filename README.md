@@ -7,6 +7,7 @@
 - tanstack query追加
 - lint-staged husky 追加
 - workflow追加
+- apiルートのためにNext.jsでフルリプレイス
 
 # 参考サイト
 
