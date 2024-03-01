@@ -18,3 +18,11 @@
 - https://github.com/highcharts/highcharts-react
 - https://github.com/highcharts/highcharts-react?tab=readme-ov-file#basic-usage-example
 - https://zenn.dev/kanakanho/articles/3a8b313e698b7f
+- https://developer.mozilla.org/en-US/docs/Glossary/Guard
+- https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Basic_concepts#guard
+- https://developer.mozilla.org/en-US/docs/Web/API/Headers
+- https://github.com/whatwg/fetch/issues/608
+- https://zenn.dev/yumemi_inc/articles/670970a573c31c
+- https://tanstack.com/query/latest/docs/framework/react/guides/advanced-ssr
+- https://tanstack.com/query/latest/docs/framework/react/guides/caching
+- https://zenn.dev/highgrenade/scraps/a09ede9be33c61

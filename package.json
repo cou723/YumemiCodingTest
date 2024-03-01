@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "vitest"
+    "test": "vitest",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@actions/core": "^1.10.1",
@@ -32,6 +34,7 @@
     "@storybook/addon-links": "^7.6.16",
     "@storybook/addon-onboarding": "^1.0.11",
     "@storybook/blocks": "^7.6.16",
+    "@storybook/nextjs": "^7.6.17",
     "@storybook/react": "^7.6.16",
     "@storybook/react-vite": "^7.6.16",
     "@storybook/test": "^7.6.16",
