@@ -16,9 +16,7 @@ type ResasPrefectureOptions = {
 
 // DONT FORGET ERROR HANDLING
 export async function fetchApi({ type: _, url: url_path, method, ...rest }: ResasOptions): Promise<unknown> {
-  console.log("api/" + url_path, window.location.origin);
   const url = new URL("api/" + url_path, window.location.origin);
-  console.log(url);
   const params = { ...rest }.params;
 
   if (params) {
@@ -30,8 +28,10 @@ export async function fetchApi({ type: _, url: url_path, method, ...rest }: Resa
   const res = await fetch(
     new Request(url, {
       method,
-    })
+    }),
+    { cache: "force-cache" }
   );
+  console.log(res);
   return await res.json();
 }
 

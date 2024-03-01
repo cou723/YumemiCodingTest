@@ -16,7 +16,6 @@ export const metadata: Metadata = {
 const queryClient = new QueryClient({
   defaultOptions: { queries: { refetchOnWindowFocus: false, staleTime: Infinity } },
 });
-console.log("init queryClient");
 
 export function LayoutClient({
   children,

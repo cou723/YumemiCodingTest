@@ -22,9 +22,11 @@ export async function GET(req: NextApiRequest): Promise<Response> {
       method: "GET",
       params: result.data,
     });
-    return apiRes;
+    const res = new Response(apiRes.body, { status: apiRes.status, headers: apiRes.headers });
+    res.headers.set("Cache-Control", `public, max-age=${60 * 60 * 24 * 120}`); // 120days
+    return res;
   } catch (e) {
-    if (e instanceof Error) return NextResponse.json({ error: e.message }, { status: 500 });
+    if (e instanceof Error) return NextResponse.json({ error: e.message }, { status: 400 });
     return NextResponse.error();
   }
 }

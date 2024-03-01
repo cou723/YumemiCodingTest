@@ -7,8 +7,8 @@ import { Prefecture } from "@/types/prefecture";
 
 export function usePopulationComposition(prefCode: Prefecture["prefCode"]) {
   return useQuery<PopulationCompositionResponse, Error>({
-    queryKey: [keys.populationComposition, keys.populationComposition + prefCode],
+    queryKey: [keys.populationComposition, prefCode],
     queryFn: () => fetchPopulationComposition({ prefCode }),
-    staleTime: 1 /* 120days */,
+    staleTime: 1000 * 60 * 60 * 24 * 120 /* 120days */,
   });
 }
