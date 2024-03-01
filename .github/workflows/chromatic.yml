@@ -11,6 +11,10 @@ jobs:
         with:
           fetch-depth: 0
 
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 8.15.3
+
       - name: Install dependencies
         # ⚠️ Pick one of these, matching the package manager for your project
         run: pnpm install
