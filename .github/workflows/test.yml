@@ -22,6 +22,9 @@ jobs:
         run: |
           pnpm i --frozen-lockfile
           pnpm run build
+        env:
+          VITE_RESAS_API_KEY: ${{secrets.VITE_RESAS_API_KEY}}
+
       - name: "Test"
         run: pnpm dlx vitest --coverage.enabled true
 
