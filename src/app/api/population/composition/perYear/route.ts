@@ -1,6 +1,5 @@
 import { fetchResas } from "@/app/api/utils/fetchServerSideResas";
-import { NextApiRequest } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 
 const RequestBodySchema = z.object({
@@ -8,7 +7,7 @@ const RequestBodySchema = z.object({
   cityCode: z.string(),
 });
 
-export async function GET(req: NextApiRequest): Promise<Response> {
+export async function GET(req: NextRequest): Promise<Response> {
   const { searchParams } = new URL(req.url!);
   const params = { prefCode: parseInt(searchParams.get("prefCode")!), cityCode: searchParams.get("cityCode") };
 

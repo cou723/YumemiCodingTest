@@ -1,8 +1,7 @@
 import { fetchResas } from "@/app/api/utils/fetchServerSideResas";
-import { NextApiRequest } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextApiRequest): Promise<Response> {
+export async function GET(req: NextRequest): Promise<Response> {
   try {
     const apiRes = await fetchResas({ type: "prefectures", url: "prefectures", method: "GET" });
     apiRes.headers.set("Cache-Control", `public, max-age=${60 * 60 * 24 * 120}`);
