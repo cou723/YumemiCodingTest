@@ -32,6 +32,9 @@ dependencies:
   highcharts:
     specifier: ^11.3.0
     version: 11.3.0
+  highcharts-accessibility:
+    specifier: ^0.1.7
+    version: 0.1.7
   highcharts-react-official:
     specifier: ^3.2.1
     version: 3.2.1(highcharts@11.3.0)(react@18.2.0)
@@ -7237,6 +7240,11 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       function-bind: 1.1.2
+
+  /highcharts-accessibility@0.1.7:
+    resolution: {integrity: sha512-2hfAuQN8NtGCiq4+F4fG45LT6cwr9YJWAviMZdIlFUEMqn15MRzhuLtJthQU0UM5rfkjBe01/z6zfb7p1b9N4w==}
+    deprecated: this package has been deprecated, just import modules from the highcharts folder
+    dev: false
 
   /highcharts-react-official@3.2.1(highcharts@11.3.0)(react@18.2.0):
     resolution: {integrity: sha512-hyQTX7ezCxl7JqumaWiGsroGWalzh24GedQIgO3vJbkGOZ6ySRAltIYjfxhrq4HszJOySZegotEF7v+haQ75UA==}

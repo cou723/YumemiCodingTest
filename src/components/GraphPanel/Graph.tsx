@@ -1,7 +1,13 @@
+"use client";
 import React from "react";
 
-import * as Highcharts from "highcharts";
+import Highcharts from "highcharts";
+import highChartsAccessibility from "highcharts/modules/accessibility";
 import HighchartsReact from "highcharts-react-official";
+
+if (typeof Highcharts === "object") {
+  highChartsAccessibility(Highcharts);
+}
 
 type Props = {
   populationCompositions: { label: string; data: [number, number][] }[];
