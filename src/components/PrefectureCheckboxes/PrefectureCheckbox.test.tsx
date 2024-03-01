@@ -7,9 +7,9 @@ import { cleanup, getByText, render, waitFor } from "@testing-library/react";
 import { PopulationCompositionResponse } from "@/types/populationCompositionResponse";
 import { setupServer } from "msw/node";
 import { http, HttpResponse } from "msw";
-import { PrefecturesResponse } from "@/types/prefecturesResponse";
 import React, { ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { handlers } from "../../mocks/handlers";
 
 const QueryProvider = ({ children }: { children: ReactNode }) => {
   const queryClient = new QueryClient({
@@ -22,16 +22,7 @@ const QueryProvider = ({ children }: { children: ReactNode }) => {
   return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
 };
 
-const server = setupServer(
-  http.get("api/prefectures", () => {
-    const resData: PrefecturesResponse = { result: [{ prefCode: 1, prefName: "test県" }] };
-    return HttpResponse.json(resData);
-  }),
-  http.get("api/population/composition/perYear", () => {
-    const resData: PopulationCompositionResponse = { result: { data: [], boundaryYear: 2020 } };
-    return HttpResponse.json(resData);
-  })
-);
+const server = setupServer(...handlers);
 
 beforeAll(() => server.listen());
 
@@ -45,7 +36,7 @@ afterAll(() => server.close());
 describe("PrefectureCheckboxes", () => {
   it("loading", async () => {
     // rendering
-    const toggleChecked = vi.fn((data: PopulationCompositionResponse["result"] | undefined) => {});
+    const toggleChecked = vi.fn((_data: PopulationCompositionResponse["result"] | undefined) => {});
 
     const { getByText } = render(
       <QueryProvider>
@@ -59,9 +50,9 @@ describe("PrefectureCheckboxes", () => {
 
   it("fetch success", async () => {
     // rendering
-    const toggleChecked = vi.fn((data: PopulationCompositionResponse["result"] | undefined) => {});
+    const toggleChecked = vi.fn((_data: PopulationCompositionResponse["result"] | undefined) => {});
 
-    const { getByRole, baseElement } = render(
+    const { getByRole } = render(
       <QueryProvider>
         <PrefectureCheckbox prefecture={{ prefCode: 1, prefName: "test県" }} onChange={toggleChecked} />
       </QueryProvider>
@@ -80,7 +71,7 @@ describe("PrefectureCheckboxes", () => {
     server.use(http.get("/api/population/composition/perYear", () => HttpResponse.error()));
 
     // rendering
-    const toggleChecked = vi.fn((data: PopulationCompositionResponse["result"] | undefined) => {});
+    const toggleChecked = vi.fn((_data: PopulationCompositionResponse["result"] | undefined) => {});
 
     const { getByRole } = render(
       <QueryProvider>

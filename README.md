@@ -26,3 +26,12 @@
 - https://tanstack.com/query/latest/docs/framework/react/guides/advanced-ssr
 - https://tanstack.com/query/latest/docs/framework/react/guides/caching
 - https://zenn.dev/highgrenade/scraps/a09ede9be33c61
+- https://zenn.dev/yuki_tu/articles/bdd942df59fb69
+- https://typescriptbook.jp/tutorials/component-test#%E3%83%86%E3%82%B9%E3%83%88%E3%81%99%E3%82%8B%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88
+- https://qiita.com/Yasushi-Mo/items/811456b9a0e9ee735b4b
+- https://mswjs.io/docs/api/setup-server/
+- https://qiita.com/Seo-4d696b75/items/5ac4333cadd3c50af8e3#referenceerror-document-is-not-defined
+- https://vitest.dev/guide/environment.html
+- https://github.com/testing-library/user-event/blob/main/src/document/prepareDocument.ts
+- https://www.bam.tech/article/nock-vs-msw-i-tested-both-and-here-is-what-i-learned
+- https://mswjs.io/docs/api/setup-server/use/
