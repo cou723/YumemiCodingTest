@@ -21,7 +21,7 @@ jobs:
       - name: install dependencies
         run: |
           pnpm i --frozen-lockfile
-          pnpm run build
+
       - name: "Test"
         run: pnpm dlx vitest --coverage.enabled true
 
