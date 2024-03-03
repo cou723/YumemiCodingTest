@@ -30,7 +30,7 @@ const PrefectureCheckbox: React.FC<Props> = ({ prefecture, onChange }) => {
           <CircularProgress />
         ) : (
           <input
-            name={prefecture.prefCode.toString()}
+            id={prefecture.prefCode.toString()}
             type="checkbox"
             onChange={(e) => handleChange(e)}
             disabled={!!error}
