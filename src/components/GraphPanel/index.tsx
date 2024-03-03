@@ -1,10 +1,10 @@
 import React from "react";
 
-import { Box, Tab, Tabs } from "@mui/material";
+import type { PopulationComposition } from "@/types/populationCompositions";
 
 import Graph from "@/components/GraphPanel/Graph";
+import Tabs from "@/components/GraphPanel/Tabs";
 import { extractPopulationCompositionsLabel } from "@/libs/extractPopulationCompositionsLabel";
-import { PopulationComposition } from "@/types/populationCompositions";
 
 type Props = {
   populationCompositions: PopulationComposition[];
@@ -23,21 +23,15 @@ const GraphPanel: React.FC<Props> = ({ populationCompositions }) => {
   const [selectedLabel, setSelectedLabel] = React.useState(0);
 
   return (
-    <Box>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+    <div>
+      <div>
         <Tabs
           value={selectedLabel}
-          onChange={(_e, value) => {
-            if (typeof value != "number") throw new Error("[GraphPanel] value is not number. this should not happen.");
-            setSelectedLabel(value);
-          }}
+          onChange={(value) => setSelectedLabel(value)}
           aria-label="class label"
-        >
-          {labels.map((label, i) => (
-            <Tab label={label} value={i} key={i} />
-          ))}
-        </Tabs>
-      </Box>
+          tabs={labels.map((label, i) => ({ label, value: i }))}
+        />
+      </div>
       <Graph
         populationCompositions={
           populationCompositions.map((populationComposition) =>
@@ -45,7 +39,7 @@ const GraphPanel: React.FC<Props> = ({ populationCompositions }) => {
           ) ?? []
         }
       />
-    </Box>
+    </div>
   );
 };
 

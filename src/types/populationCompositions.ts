@@ -1,5 +1,5 @@
-import { PopulationCompositionResponse } from "@/types/populationCompositionResponse";
-import { Prefecture } from "@/types/prefecture";
+import type { PopulationCompositionResponse } from "@/types/populationCompositionResponse";
+import type { Prefecture } from "@/types/prefecture";
 
 export type PopulationComposition = {
   label: Prefecture;

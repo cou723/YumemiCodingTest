@@ -1,4 +1,4 @@
-import { PopulationComposition } from "../types/populationCompositions";
+import type { PopulationComposition } from "../types/populationCompositions";
 
 /**
  * 人口構成データから分類ラベル(総人口、年少人口、老年人口 etc...)を抽出する

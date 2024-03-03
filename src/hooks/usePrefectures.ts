@@ -1,8 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 
+import type { PrefecturesResponse } from "@/types/prefecturesResponse";
+
 import { keys } from "@/constants/queryKeys";
 import { fetchPrefectures } from "@/libs/fetchApi";
-import { PrefecturesResponse } from "@/types/prefecturesResponse";
 
 export function usePrefectures() {
   return useQuery<PrefecturesResponse, Error>({

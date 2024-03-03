@@ -1,9 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 
+import type { PopulationCompositionResponse } from "@/types/populationCompositionResponse";
+import type { Prefecture } from "@/types/prefecture";
+
 import { keys } from "@/constants/queryKeys";
 import { fetchPopulationComposition } from "@/libs/fetchApi";
-import { PopulationCompositionResponse } from "@/types/populationCompositionResponse";
-import { Prefecture } from "@/types/prefecture";
 
 export function usePopulationComposition(prefCode: Prefecture["prefCode"]) {
   return useQuery<PopulationCompositionResponse, Error>({

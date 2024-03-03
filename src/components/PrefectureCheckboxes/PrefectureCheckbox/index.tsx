@@ -1,11 +1,14 @@
 import React from "react";
 
-import { Checkbox, CircularProgress, FormControlLabel } from "@mui/material";
 import toast from "react-hot-toast";
 
+import styles from "./PrefectureCheckbox.module.css";
+
+import type { PopulationCompositionResponse } from "@/types/populationCompositionResponse";
+import type { Prefecture } from "@/types/prefecture";
+
+import CircularProgress from "@/components/PrefectureCheckboxes/CircularProgress";
 import { usePopulationComposition } from "@/hooks/usePopulationComposition";
-import { PopulationCompositionResponse } from "@/types/populationCompositionResponse";
-import { Prefecture } from "@/types/prefecture";
 
 type Props = {
   prefecture: Prefecture;
@@ -21,10 +24,21 @@ const PrefectureCheckbox: React.FC<Props> = ({ prefecture, onChange }) => {
   };
 
   return (
-    <FormControlLabel
-      control={isLoading ? <CircularProgress /> : <Checkbox onChange={(e) => handleChange(e)} disabled={!!error} />}
-      label={prefecture.prefName}
-    />
+    <div>
+      {isLoading ? (
+        <CircularProgress />
+      ) : (
+        <div className={styles.box}>
+          <input
+            name={prefecture.prefCode.toString()}
+            type="checkbox"
+            onChange={(e) => handleChange(e)}
+            disabled={!!error}
+          />
+          <label htmlFor={prefecture.prefCode.toString()}>{prefecture.prefName}</label>
+        </div>
+      )}
+    </div>
   );
 };
 

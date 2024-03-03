@@ -1,12 +1,11 @@
 import toast from "react-hot-toast";
 
-import { ResasPopulationCompositionOptions } from "../types/resasPopulationCompositionOptions";
+import type { ResasPopulationCompositionOptions } from "../types/resasPopulationCompositionOptions";
+import type { PopulationCompositionResponse } from "@/types/populationCompositionResponse";
+import type { PrefecturesResponse } from "@/types/prefecturesResponse";
 
-import {
-  PopulationCompositionResponse,
-  PopulationCompositionResponseSchema,
-} from "@/types/populationCompositionResponse";
-import { PrefecturesResponse, PrefecturesResponseSchema } from "@/types/prefecturesResponse";
+import { PopulationCompositionResponseSchema } from "@/types/populationCompositionResponse";
+import { PrefecturesResponseSchema } from "@/types/prefecturesResponse";
 
 type ResasOptions = ResasPrefectureOptions | ResasPopulationCompositionOptions;
 
