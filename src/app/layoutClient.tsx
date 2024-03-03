@@ -1,11 +1,12 @@
 "use client";
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import React from "react";
-import { CssBaseline } from "@mui/material";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "react-hot-toast";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Inter } from "next/font/google";
+import { Toaster } from "react-hot-toast";
+
+import type { Metadata } from "next";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -27,7 +28,6 @@ export function LayoutClient({
       <body className={inter.className}>
         <QueryClientProvider client={queryClient}>
           <ReactQueryDevtools initialIsOpen={true} />
-          <CssBaseline />
           <Toaster />
           {children}
         </QueryClientProvider>

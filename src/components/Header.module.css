@@ -1,0 +1,14 @@
+.header {
+  width: 100%;
+  background-color: #1976d2;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.text {
+  color: white;
+  padding: 16px;
+  display: block;
+  margin: 0;
+}

@@ -1,0 +1,12 @@
+.loading_container {
+  display: flex;
+  justify-content: center;
+  padding: 32px;
+}
+
+.box {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+}
