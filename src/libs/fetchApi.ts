@@ -33,7 +33,6 @@ export async function fetchApi({ type: _, url: url_path, method, ...rest }: Resa
     }),
     { cache: "force-cache" }
   );
-  console.log(res);
   return await res.json();
 }
 
@@ -45,8 +44,6 @@ export async function fetchPrefectures(): Promise<PrefecturesResponse> {
     url: "prefectures",
     method: "GET",
   });
-
-  console.log(data);
 
   // pass error
   return await PrefecturesResponseSchema.parse(data);
