@@ -22,7 +22,7 @@ const PrefectureCheckbox: React.FC<Props> = ({ prefecture, onChange }) => {
 
   return (
     <FormControlLabel
-      control={isLoading ? <CircularProgress /> : <Checkbox onChange={(e) => handleChange(e)} />}
+      control={isLoading ? <CircularProgress /> : <Checkbox onChange={(e) => handleChange(e)} disabled={!!error} />}
       label={prefecture.prefName}
     />
   );

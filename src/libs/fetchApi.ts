@@ -16,11 +16,9 @@ type ResasPrefectureOptions = {
   method: "GET";
 };
 
-if (import.meta.env.VITE_RESAS_API_KEY === undefined) throw new Error("VITE_RESAS_API_KEY is not defined");
-
 // DONT FORGET ERROR HANDLING
-export async function fetchResas({ type: _, url: url_path, method, ...rest }: ResasOptions): Promise<unknown> {
-  const url = new URL(url_path, "https://opendata.resas-portal.go.jp/api/v1/");
+export async function fetchApi({ type: _, url: url_path, method, ...rest }: ResasOptions): Promise<unknown> {
+  const url = new URL("api/" + url_path, window.location.origin);
   const params = { ...rest }.params;
 
   if (params) {
@@ -29,26 +27,19 @@ export async function fetchResas({ type: _, url: url_path, method, ...rest }: Re
     if (params.addArea) url.searchParams.set("addArea", JSON.stringify(params.addArea));
   }
 
-  const headers = new Headers();
-  headers.append("X-API-KEY", import.meta.env.VITE_RESAS_API_KEY as string);
-
-  const res = await fetch(new Request(url, { headers, method }));
-
-  if (res.ok === false) {
-    if (res.status === 429) {
-      toast.error("APIの利用制限にかかりました。しばらく時間をおいてから再度お試しください。");
-      return {};
-    }
-    toast(`fetchResas: ${res.status} ${res.statusText}`);
-    throw new Error(`fetchResas: ${res.status} ${res.statusText}`);
-  }
+  const res = await fetch(
+    new Request(url, {
+      method,
+    }),
+    { cache: "force-cache" }
+  );
   return await res.json();
 }
 
 // DONT FORGET ERROR HANDLING
 export async function fetchPrefectures(): Promise<PrefecturesResponse> {
   // pass error
-  const data = await fetchResas({
+  const data = await fetchApi({
     type: "prefectures",
     url: "prefectures",
     method: "GET",
@@ -64,7 +55,7 @@ export async function fetchPopulationComposition(
 ): Promise<PopulationCompositionResponse> {
   if (params.cityCode == undefined) params.cityCode = "-";
   // pass error
-  const data = await fetchResas({
+  const data = await fetchApi({
     type: "populationComposition",
     url: "population/composition/perYear",
     method: "GET",

@@ -31,7 +31,7 @@ const GraphPanel: React.FC<Props> = ({ populationCompositions }) => {
             if (typeof value != "number") throw new Error("[GraphPanel] value is not number. this should not happen.");
             setSelectedLabel(value);
           }}
-          aria-label="basic tabs example"
+          aria-label="class label"
         >
           {labels.map((label, i) => (
             <Tab label={label} value={i} key={i} />
