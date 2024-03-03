@@ -20,14 +20,14 @@ export default function Home() {
   return (
     <>
       <Header />
-      <div className={styles.box}>
+      <main className={styles.box}>
         <PrefectureCheckboxes
           isLoading={isLoading}
           prefectures={prefectures?.result}
           onChange={(prefectures) => setPopulationCompositions(prefectures)}
         />
         <GraphPanel populationCompositions={populationCompositions} />
-      </div>
+      </main>
     </>
   );
 }

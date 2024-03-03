@@ -10,7 +10,7 @@ type Props = {
 const Tabs: React.FC<Props> = ({ value, onChange, tabs }) => {
   const [selected, setSelected] = React.useState(value);
   return (
-    <div>
+    <div className={styles.box}>
       {tabs.map((tab, i) => {
         return (
           <button
@@ -19,7 +19,7 @@ const Tabs: React.FC<Props> = ({ value, onChange, tabs }) => {
               setSelected(tab.value);
               onChange(tab.value);
             }}
-            className={selected === tab.value ? styles.tab_selected : styles.tab}
+            className={`${styles.tab} ${selected === tab.value ? styles.tab_selected : ""}`}
           >
             {tab.label}
           </button>
