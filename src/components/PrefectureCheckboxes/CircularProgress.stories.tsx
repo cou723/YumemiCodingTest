@@ -1,6 +1,8 @@
-import type { Meta, StoryObj } from "@storybook/react";
-import CircularProgress from "./CircularProgress";
 import { QueryClient } from "@tanstack/react-query";
+
+import CircularProgress from "./CircularProgress";
+
+import type { Meta, StoryObj } from "@storybook/react";
 const meta = {
   title: "CircularProgress",
   component: CircularProgress,

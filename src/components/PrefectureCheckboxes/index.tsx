@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 
-import PrefectureCheckbox from "@/components/PrefectureCheckboxes/PrefectureCheckbox";
-import { PopulationComposition } from "@/types/populationCompositions";
-import { Prefecture } from "@/types/prefecture";
 import styles from "./PrefectureCheckboxes.module.css";
+
+import type { PopulationComposition } from "@/types/populationCompositions";
+import type { Prefecture } from "@/types/prefecture";
+
 import CircularProgress from "@/components/PrefectureCheckboxes/CircularProgress";
+import PrefectureCheckbox from "@/components/PrefectureCheckboxes/PrefectureCheckbox";
 
 type Props = {
   isLoading: boolean;

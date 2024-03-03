@@ -1,5 +1,8 @@
+import { NextResponse } from "next/server";
+
+import type { NextRequest } from "next/server";
+
 import { fetchResas } from "@/app/api/utils/fetchServerSideResas";
-import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest): Promise<Response> {
   try {

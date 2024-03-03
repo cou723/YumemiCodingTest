@@ -1,6 +1,9 @@
-import { fetchResas } from "@/app/api/utils/fetchServerSideResas";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { z } from "zod";
+
+import type { NextRequest } from "next/server";
+
+import { fetchResas } from "@/app/api/utils/fetchServerSideResas";
 
 const RequestBodySchema = z.object({
   prefCode: z.number(),

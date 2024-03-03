@@ -1,6 +1,7 @@
-import { PopulationCompositionResponse } from "@/types/populationCompositionResponse";
 import { http, HttpResponse } from "msw";
-import { PrefecturesResponse } from "@/types/prefecturesResponse";
+
+import type { PopulationCompositionResponse } from "@/types/populationCompositionResponse";
+import type { PrefecturesResponse } from "@/types/prefecturesResponse";
 
 export const handlers = [
   http.get("api/prefectures", () => {

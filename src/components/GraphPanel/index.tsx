@@ -1,9 +1,10 @@
 import React from "react";
 
+import type { PopulationComposition } from "@/types/populationCompositions";
+
 import Graph from "@/components/GraphPanel/Graph";
-import { extractPopulationCompositionsLabel } from "@/libs/extractPopulationCompositionsLabel";
-import { PopulationComposition } from "@/types/populationCompositions";
 import Tabs from "@/components/GraphPanel/Tabs";
+import { extractPopulationCompositionsLabel } from "@/libs/extractPopulationCompositionsLabel";
 
 type Props = {
   populationCompositions: PopulationComposition[];

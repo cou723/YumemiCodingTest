@@ -1,16 +1,21 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 // @vitest-environment jsdom
-import PrefectureCheckboxes from "@/components/PrefectureCheckboxes";
+import type { ReactNode } from "react";
+import React from "react";
+
 import { describe } from "node:test";
-import { afterAll, afterEach, beforeAll, expect, it, vi } from "vitest";
-import userEvent from "@testing-library/user-event";
-import { cleanup, render, waitFor } from "@testing-library/react";
-import { PopulationCompositionResponse } from "@/types/populationCompositionResponse";
-import { setupServer } from "msw/node";
-import { http, HttpResponse } from "msw";
-import React, { ReactNode } from "react";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { cleanup, render, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { setupServer } from "msw/node";
+import { afterAll, afterEach, beforeAll, expect, it, vi } from "vitest";
+
 import { handlers } from "../../mocks/handlers";
-import { PopulationComposition } from "@/types/populationCompositions";
+
+import type { PopulationComposition } from "@/types/populationCompositions";
+
+import PrefectureCheckboxes from "@/components/PrefectureCheckboxes";
 
 const QueryProvider = ({ children }: { children: ReactNode }) => {
   const queryClient = new QueryClient({

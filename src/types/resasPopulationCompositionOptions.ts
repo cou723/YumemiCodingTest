@@ -1,4 +1,4 @@
-import { Prefecture } from "@/types/prefecture";
+import type { Prefecture } from "@/types/prefecture";
 
 export type ResasPopulationCompositionOptions = {
   type: "populationComposition";

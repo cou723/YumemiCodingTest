@@ -1,4 +1,4 @@
-import { ResasPopulationCompositionOptions } from "@/types/resasPopulationCompositionOptions";
+import type { ResasPopulationCompositionOptions } from "@/types/resasPopulationCompositionOptions";
 
 type ResasOptions = ResasPrefectureOptions | ResasPopulationCompositionOptions;
 
