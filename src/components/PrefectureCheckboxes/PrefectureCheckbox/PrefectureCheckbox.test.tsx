@@ -9,7 +9,7 @@ import { setupServer } from "msw/node";
 import { http, HttpResponse } from "msw";
 import React, { ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { handlers } from "../../mocks/handlers";
+import { handlers } from "../../../mocks/handlers";
 
 const QueryProvider = ({ children }: { children: ReactNode }) => {
   const queryClient = new QueryClient({

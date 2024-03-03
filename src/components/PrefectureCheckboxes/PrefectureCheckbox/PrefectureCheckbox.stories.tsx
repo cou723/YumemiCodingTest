@@ -1,5 +1,5 @@
 import type { StoryFn, Meta, StoryObj } from "@storybook/react";
-import PrefectureCheckbox from "./PrefectureCheckbox";
+import PrefectureCheckbox from ".";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 const meta = {

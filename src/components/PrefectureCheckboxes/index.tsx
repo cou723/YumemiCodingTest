@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 
-import { Box, CircularProgress } from "@mui/material";
-
-import FlexBox from "@/components/Flexbox";
 import PrefectureCheckbox from "@/components/PrefectureCheckboxes/PrefectureCheckbox";
 import { PopulationComposition } from "@/types/populationCompositions";
 import { Prefecture } from "@/types/prefecture";
+import styles from "./PrefectureCheckboxes.module.css";
+import CircularProgress from "@/components/PrefectureCheckboxes/CircularProgress";
 
 type Props = {
   isLoading: boolean;
@@ -18,13 +17,13 @@ const PrefectureCheckboxes: React.FC<Props> = ({ isLoading, prefectures = [], on
 
   if (isLoading)
     return (
-      <FlexBox justifyContent="center" sx={{ padding: "32px" }}>
+      <div className={styles.loading_container}>
         <CircularProgress />
-      </FlexBox>
+      </div>
     );
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "row", width: "100%", flexWrap: "wrap" }}>
+    <div className={styles.box}>
       {prefectures.map((prefecture, i) => (
         <PrefectureCheckbox
           key={i}
@@ -42,7 +41,7 @@ const PrefectureCheckboxes: React.FC<Props> = ({ isLoading, prefectures = [], on
           }}
         />
       ))}
-    </Box>
+    </div>
   );
 };
 
