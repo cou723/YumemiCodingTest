@@ -30,6 +30,7 @@ const PrefectureCheckbox: React.FC<Props> = ({ prefecture, onChange }) => {
           <CircularProgress />
         ) : (
           <input
+            className={styles.checkbox}
             id={prefecture.prefCode.toString()}
             type="checkbox"
             onChange={(e) => handleChange(e)}
@@ -37,7 +38,9 @@ const PrefectureCheckbox: React.FC<Props> = ({ prefecture, onChange }) => {
           />
         )}
 
-        <label htmlFor={prefecture.prefCode.toString()}>{prefecture.prefName}</label>
+        <label className={styles.checkbox} htmlFor={prefecture.prefCode.toString()}>
+          {prefecture.prefName}
+        </label>
       </div>
     </div>
   );
