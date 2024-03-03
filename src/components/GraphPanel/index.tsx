@@ -1,5 +1,7 @@
 import React from "react";
 
+import styles from "./GraphPanel.module.css";
+
 import type { PopulationComposition } from "@/types/populationCompositions";
 
 import Graph from "@/components/GraphPanel/Graph";
@@ -23,7 +25,7 @@ const GraphPanel: React.FC<Props> = ({ populationCompositions }) => {
   const [selectedLabel, setSelectedLabel] = React.useState(0);
 
   return (
-    <div>
+    <div className={styles.box}>
       <div>
         <Tabs
           value={selectedLabel}
