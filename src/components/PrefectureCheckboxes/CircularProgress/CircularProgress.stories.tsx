@@ -1,6 +1,4 @@
-import { QueryClient } from "@tanstack/react-query";
-
-import CircularProgress from "./CircularProgress";
+import CircularProgress from ".";
 
 import type { Meta, StoryObj } from "@storybook/react";
 const meta = {

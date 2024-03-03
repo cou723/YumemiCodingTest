@@ -2,8 +2,6 @@ import GraphPanel from "../GraphPanel";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { range } from "@/libs/range";
-
 const meta = {
   title: "GraphPanel",
   component: GraphPanel,
