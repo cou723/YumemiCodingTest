@@ -41,6 +41,9 @@ dependencies:
   highcharts:
     specifier: ^11.3.0
     version: 11.3.0
+  highcharts-accessibility:
+    specifier: ^0.1.7
+    version: 0.1.7
   highcharts-react-official:
     specifier: ^3.2.1
     version: 3.2.1(highcharts@11.3.0)(react@18.2.0)
@@ -8422,6 +8425,7 @@ packages:
     dependencies:
       function-bind: 1.1.2
 
+<<<<<<< HEAD
   /he@1.2.0:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
@@ -8429,6 +8433,12 @@ packages:
 
   /headers-polyfill@4.0.2:
     resolution: {integrity: sha512-EWGTfnTqAO2L/j5HZgoM/3z82L7necsJ0pO9Tp0X1wil3PDLrkypTBRgVO2ExehEEvUycejZD3FuRaXpZZc3kw==}
+=======
+  /highcharts-accessibility@0.1.7:
+    resolution: {integrity: sha512-2hfAuQN8NtGCiq4+F4fG45LT6cwr9YJWAviMZdIlFUEMqn15MRzhuLtJthQU0UM5rfkjBe01/z6zfb7p1b9N4w==}
+    deprecated: this package has been deprecated, just import modules from the highcharts folder
+    dev: false
+>>>>>>> development
 
   /highcharts-react-official@3.2.1(highcharts@11.3.0)(react@18.2.0):
     resolution: {integrity: sha512-hyQTX7ezCxl7JqumaWiGsroGWalzh24GedQIgO3vJbkGOZ6ySRAltIYjfxhrq4HszJOySZegotEF7v+haQ75UA==}
